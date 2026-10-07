@@ -1,18 +1,40 @@
 <header>
+
     <nav aria-label="Navegação principal">
 
-        <a href="/">
+        <a href="{% url 'home' %}">
             SITE
         </a>
 
         <ul>
-            <li><a href="#">Item 1</a></li>
-            <li><a href="#">Item 2</a></li>
-            <li><a href="#">Item 3</a></li>
-            <li><a href="#">Item 4</a></li>
+
+            <li>
+                <a href="{% url 'technology' %}">
+                    Tecnologias
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'professionals' %}">
+                    Profissionais
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'about' %}">
+                    Empresa
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'content' %}">
+                    Conteúdo
+                </a>
+            </li>
+
         </ul>
 
-        <form action="#" method="get" role="search">
+        <form action="{% url 'search' %}" method="get" role="search">
 
             <label for="site-search">
                 Buscar
@@ -32,4 +54,5 @@
         </form>
 
     </nav>
+
 </header>
