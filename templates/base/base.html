@@ -1,36 +1,37 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+    {% load static %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{% block title %}Site{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <meta
         name="description"
-        content="{% block description %}Tecnologia e soluções para o seu sono.{% endblock %}"
+        content="{% block description %}{% endblock %}"
     >
+
+    <script
+        src="{% static 'js/interactions/navigation.js' %}"
+        defer
+    ></script>
+
 </head>
 
 <body>
-
+'
     {% include "components/header.html" %}
 
-
-    <main>
+    <main id="main-content">
         {% block content %}
         {% endblock %}
     </main>
 
-
-    <footer>
-
-        <p>
-            {% include "components/footer.html" %}
-        </p>
-
-    </footer>
+    {% include "components/footer.html" %}
 
 </body>
 
