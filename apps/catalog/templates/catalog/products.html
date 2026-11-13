@@ -2,7 +2,7 @@
 
 
 {% block title %}
-Produtos | Site
+Produtos | LEDLAMP Colchões
 {% endblock %}
 
 
@@ -34,10 +34,44 @@ Conheça os nossos produtos e encontre a solução adequada para suas necessidad
             Nossa linha
         </h2>
 
-        <p>
-            Informações sobre categorias e produtos serão
-            disponibilizadas aqui.
-        </p>
+
+        {% if products %}
+
+            <ul>
+
+                {% for product in products %}
+
+                    <li>
+
+                        <article>
+
+                            <h3>
+                                {{ product.name }}
+                            </h3>
+
+                            {% if product.description %}
+
+                                <p>
+                                    {{ product.description }}
+                                </p>
+
+                            {% endif %}
+
+                        </article>
+
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        {% else %}
+
+            <p>
+                Nenhum produto disponível no momento.
+            </p>
+
+        {% endif %}
 
     </section>
 

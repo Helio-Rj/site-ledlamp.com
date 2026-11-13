@@ -1,58 +1,101 @@
-<header>
+<header class="site-header">
+    <div class="site-header__container">
 
-    <nav aria-label="Navegação principal">
-
-        <a href="{% url 'home' %}">
-            SITE
+        <!-- Identidade da empresa -->
+        <a
+            class="site-header__brand"
+            href="{% url 'home' %}"
+            aria-label="LEDLAMP Colchões — página inicial"
+        >
+            LEDLAMP
+            <span>COLCHÕES</span>
         </a>
 
-        <ul>
+        <!-- Botão do menu para dispositivos móveis -->
+        <button
+            class="site-header__menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-navigation"
+            aria-label="Abrir menu de navegação"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-            <li>
-                <a href="{% url 'technology' %}">
-                    Tecnologias
-                </a>
-            </li>
+        <!-- Navegação principal -->
+        <nav
+            class="site-header__navigation"
+            id="site-navigation"
+            aria-label="Navegação principal"
+        >
+            <ul class="site-header__links">
 
-            <li>
-                <a href="{% url 'professionals' %}">
-                    Profissionais
-                </a>
-            </li>
+                <li>
+                    <a href="{% url 'products' %}">
+                        Produtos
+                    </a>
+                </li>
 
-            <li>
-                <a href="{% url 'about' %}">
-                    Empresa
-                </a>
-            </li>
+                <li>
+                    <a href="{% url 'technology' %}">
+                        Tecnologias
+                    </a>
+                </li>
 
-            <li>
-                <a href="{% url 'content' %}">
-                    Conteúdo
-                </a>
-            </li>
+                <li>
+                    <a href="{% url 'content' %}">
+                        Conteúdo
+                    </a>
+                </li>
 
-        </ul>
+                <li>
+                    <a href="{% url 'about' %}">
+                        Empresa
+                    </a>
+                </li>
 
-        <form action="{% url 'search' %}" method="get" role="search">
+                <li>
+                    <a href="{% url 'professionals' %}">
+                        Para profissionais
+                    </a>
+                </li>
 
-            <label for="site-search">
-                Buscar
+                <li>
+                    <a href="{% url 'contact' %}">
+                        Contato
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
+
+        <!-- Pesquisa do site -->
+        <form
+            class="site-header__search"
+            action="{% url 'search' %}"
+            method="get"
+            role="search"
+        >
+            <label
+                class="site-header__search-label"
+                for="site-search"
+            >
+                Buscar no site
             </label>
 
             <input
-                type="search"
                 id="site-search"
                 name="q"
-                placeholder="Buscar"
+                type="search"
+                placeholder="O que você procura?"
             >
 
             <button type="submit">
                 Buscar
             </button>
-
         </form>
 
-    </nav>
-
+    </div>
 </header>
