@@ -1,80 +1,89 @@
-{% extends "base/base.html" %}
 
+{% extends "base/base.html" %}
 
 {% block title %}
 Produtos | LEDLAMP Colchões
 {% endblock %}
 
-
 {% block description %}
-Conheça os nossos produtos e encontre a solução adequada para suas necessidades.
+Conheça os produtos LEDLAMP Colchões e encontre a opção adequada para seu descanso.
 {% endblock %}
-
 
 {% block content %}
 
-<article>
+<section class="catalog" aria-labelledby="catalog-title">
 
-    <header>
-        <p>PRODUTOS</p>
+    <header class="catalog__header">
+        <p class="catalog__eyebrow">LEDLAMP COLCHÕES</p>
 
-        <h1>
-            Conheça nossos produtos
+        <h1 id="catalog-title">
+            Nossa linha de colchões
         </h1>
 
         <p>
-            A nossa linha de produtos será apresentada nesta área.
+            Conheça nossos produtos e descubra novas possibilidades
+            para o seu descanso.
         </p>
     </header>
 
+    <div class="product-grid">
 
-    <section aria-labelledby="products-title">
+        {% for product in products %}
 
-        <h2 id="products-title">
-            Nossa linha
-        </h2>
+            <article class="product-card">
 
+                {% with product_image=product.images.all.0 %}
 
-        {% if products %}
+                    <div class="product-card__image">
 
-            <ul>
+                        {% if product_image %}
 
-                {% for product in products %}
+                            <img
+                                src="{{ product_image.image.url }}"
+                                alt="{{ product_image.alt_text }}"
+                                loading="lazy"
+                            >
 
-                    <li>
+                        {% else %}
 
-                        <article>
+                            <div class="product-card__placeholder">
+                                <span>Imagem em breve</span>
+                            </div>
 
-                            <h3>
-                                {{ product.name }}
-                            </h3>
+                        {% endif %}
 
-                            {% if product.description %}
+                    </div>
 
-                                <p>
-                                    {{ product.description }}
-                                </p>
+                {% endwith %}
 
-                            {% endif %}
+                <div class="product-card__content">
 
-                        </article>
+                    <h2 class="product-card__title">
+                        {{ product.name }}
+                    </h2>
 
-                    </li>
+                    {% if product.description %}
 
-                {% endfor %}
+                        <p class="product-card__description">
+                            {{ product.description }}
+                        </p>
 
-            </ul>
+                    {% endif %}
 
-        {% else %}
+                </div>
 
-            <p>
+            </article>
+
+        {% empty %}
+
+            <p class="catalog__empty">
                 Nenhum produto disponível no momento.
             </p>
 
-        {% endif %}
+        {% endfor %}
 
-    </section>
+    </div>
 
-</article>
+</section>
 
 {% endblock %}
