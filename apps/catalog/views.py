@@ -1,11 +1,26 @@
+
+from django.db.models import Prefetch
 from django.shortcuts import render
 
-from .models import Product
+from .models import Product, ProductImage
 
 
 def products(request):
-    products_list = Product.objects.filter(
-        is_active=True
+    product_images = ProductImage.objects.order_by(
+        "-is_primary",
+        "position",
+        "id",
+    )
+
+    products_list = (
+        Product.objects
+        .filter(is_active=True)
+        .prefetch_related(
+            Prefetch(
+                "images",
+                queryset=product_images,
+            )
+        )
     )
 
     context = {
